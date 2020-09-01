@@ -1,19 +1,14 @@
-import java.awt.*;
-
 public class Main {
     public static void main(String[] args) {
-        Car withAllArguments = Car.builder()
-                .withNumberOfSeats(6)
-                .withNumberOfWheels(8)
-                .withTrunkCapacityInLiters(150)
-                .withColor(Color.BLACK)
-                .withEngineType("500 KM")
-                .build();
-        System.out.println(withAllArguments.toString());
+        assembleCar(new TankCreator());
 
-        Car withSomeDefaults = Car.builder()
-                .withNumberOfSeats(5)
-                .build();
-        System.out.println(withSomeDefaults.toString());
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+        assembleCar(new HondaCreator());
+    }
+
+    private static void assembleCar(CarCreator carCreator) {
+        Car assembledCar = carCreator.getPreparedCar();
+        System.out.println(assembledCar.toString());
     }
 }
