@@ -1,21 +1,33 @@
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main {
-    public static void main(String[] args) {
-        Vehicle c = new Car(500, 4);
-        Vehicle t = new Truck(500000, 6);
+    private static final Logger logger = Logger.getLogger(Main.class.getSimpleName());
 
-        Vehicle cClone = c.clone();
-        Vehicle tClone = t.clone();
+    public static void main(String[] args) throws CloneNotSupportedException {
+        testCarCloning();
+        testTruckCloning();
+    }
 
-        System.out.println("Original");
-        System.out.println(c.getKmCounter());
-        System.out.println(c.getNumberOfWheels());
-        System.out.println(t.getKmCounter());
-        System.out.println(t.getNumberOfWheels());
-        
-        System.out.println("Clones");
-        System.out.println(cClone.getKmCounter());
-        System.out.println(cClone.getNumberOfWheels());
-        System.out.println(tClone.getKmCounter());
-        System.out.println(tClone.getNumberOfWheels());
+    private static void testCarCloning() throws CloneNotSupportedException {
+        Car c = new Car();
+        c.setKmCounter(50000);
+        c.addPassenger("Robert De Niro");
+        c.addPassenger("Emma Watson");
+        logger.log(Level.INFO, c.toString());
+
+        Car clonedCar = (Car) c.clone();
+        logger.log(Level.INFO, clonedCar.toString());
+    }
+
+    private static void testTruckCloning() throws CloneNotSupportedException {
+        Truck t = new Truck();
+        t.setKmCounter(500000);
+        t.setLoadPercentage(89.0);
+
+        logger.log(Level.INFO, t.toString());
+
+        Truck clonedTruck = (Truck) t.clone();
+        logger.log(Level.INFO, clonedTruck.toString());
     }
 }

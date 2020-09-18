@@ -1,18 +1,22 @@
 public class Truck extends Vehicle {
-    public Truck(int kmCounter, int numberOfWheels) {
-        super(kmCounter, numberOfWheels);
-    }
+    private double loadPercentage = 0.0;
 
-    @Override
-    public Vehicle clone() {
-        Truck clone = new Truck(this.getKmCounter(), this.getNumberOfWheels());
-        clone.reset();
-        return clone;
+    public void setLoadPercentage(double loadPercentage) {
+        if (loadPercentage >= 0 && loadPercentage <= 100) {
+            this.loadPercentage = loadPercentage;
+        } else {
+            throw new IllegalArgumentException("Load percentage out of allowed boundaries");
+        }
     }
 
     @Override
     public void reset() {
-        System.out.println("Truck test drive");
-        this.kmCounter = 10; // because test drive 🤷
+        this.loadPercentage = 0.0;
+    }
+
+    @Override
+    public String toString() {
+        return "Km counter = " + kmCounter + "\n" +
+                "Load percentage = " + loadPercentage;
     }
 }

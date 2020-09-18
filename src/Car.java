@@ -1,17 +1,25 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car extends Vehicle {
-    public Car(int kmCounter, int numberOfWheels) {
-        super(kmCounter, numberOfWheels);
+    private final List<String> passengerList = new ArrayList<>();
+
+    public List<String> getPassengerList() {
+        return passengerList;
     }
 
-    @Override
-    public Vehicle clone() {
-        Car clone = new Car(this.getKmCounter(), this.getNumberOfWheels());
-        clone.reset();
-        return clone;
+    public void addPassenger(String passenger) {
+        passengerList.add(passenger);
     }
 
     @Override
     public void reset() {
-        this.kmCounter = 0;
+        passengerList.clear();
+    }
+
+    @Override
+    public String toString() {
+        return "Km counter = " + kmCounter + "\n" +
+                "Passengers: " + passengerList;
     }
 }

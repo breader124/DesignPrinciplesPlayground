@@ -1,21 +1,21 @@
-public abstract class Vehicle {
-    protected int kmCounter;
-    protected int numberOfWheels;
+public abstract class Vehicle implements Cloneable {
+    protected int kmCounter = 0;
 
-    public Vehicle(int kmCounter, int numberOfWheels) {
+    public void setKmCounter(int kmCounter) {
         this.kmCounter = kmCounter;
-        this.numberOfWheels = numberOfWheels;
     }
 
-    public int getKmCounter() {
-        return kmCounter;
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Vehicle clone = (Vehicle) super.clone();
+        clone.initialize();
+        return clone;
     }
 
-    public int getNumberOfWheels() {
-        return numberOfWheels;
+    private void initialize() {
+        this.kmCounter = 0;
+        reset();
     }
-
-    public abstract Vehicle clone();
 
     public abstract void reset();
 }
