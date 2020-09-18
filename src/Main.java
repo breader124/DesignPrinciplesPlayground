@@ -1,19 +1,21 @@
-import java.awt.*;
-
 public class Main {
     public static void main(String[] args) {
-        Car withAllArguments = Car.builder()
-                .withNumberOfSeats(6)
-                .withNumberOfWheels(8)
-                .withTrunkCapacityInLiters(150)
-                .withColor(Color.BLACK)
-                .withEngineType("500 KM")
-                .build();
-        System.out.println(withAllArguments.toString());
+        Vehicle c = new Car(500, 4);
+        Vehicle t = new Truck(500000, 6);
 
-        Car withSomeDefaults = Car.builder()
-                .withNumberOfSeats(5)
-                .build();
-        System.out.println(withSomeDefaults.toString());
+        Vehicle cClone = c.clone();
+        Vehicle tClone = t.clone();
+
+        System.out.println("Original");
+        System.out.println(c.getKmCounter());
+        System.out.println(c.getNumberOfWheels());
+        System.out.println(t.getKmCounter());
+        System.out.println(t.getNumberOfWheels());
+        
+        System.out.println("Clones");
+        System.out.println(cClone.getKmCounter());
+        System.out.println(cClone.getNumberOfWheels());
+        System.out.println(tClone.getKmCounter());
+        System.out.println(tClone.getNumberOfWheels());
     }
 }
