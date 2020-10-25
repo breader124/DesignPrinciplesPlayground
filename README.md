@@ -1,0 +1,1 @@
+Please checkout particular branches in order to see implementation of different design patterns.
